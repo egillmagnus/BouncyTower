@@ -3,6 +3,6 @@ module hi.bouncytower.bouncytower {
     requires javafx.fxml;
 
 
-    opens hi.bouncytower.bouncytower to javafx.fxml;
-    exports hi.bouncytower.bouncytower;
+    opens hi.bouncytower.vidmot to javafx.fxml;
+    exports hi.bouncytower.vidmot;
 }

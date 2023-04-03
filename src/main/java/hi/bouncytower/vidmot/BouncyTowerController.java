@@ -1,9 +1,9 @@
-package hi.bouncytower.bouncytower;
+package hi.bouncytower.vidmot;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class BouncyTowerController {
     @FXML
     private Label welcomeText;
 
