@@ -22,4 +22,9 @@ public class BouncyTowerApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        BouncyTowerController.shutdown();
+    }
 }
