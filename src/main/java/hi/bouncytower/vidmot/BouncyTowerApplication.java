@@ -10,9 +10,11 @@ import java.io.IOException;
 public class BouncyTowerApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(BouncyTowerApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(BouncyTowerApplication.class.getResource("mainMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        ViewSwitcher.setScene(scene);
+        ViewSwitcher.switchTo(View.MAINMENU);
+        stage.setTitle("BouncyTower!");
         stage.setScene(scene);
         stage.show();
     }
