@@ -1,0 +1,14 @@
+.center-vbox {
+    -fx-spacing: 10px; /* Space between buttons */
+    -fx-alignment: center;
+    -fx-padding: 10px;
+}
+
+.center-vbox .button {
+    -fx-pref-width: 70%;
+    -fx-max-width: Infinity;
+    -fx-pref-height: 20%;
+    -fx-max-height: Infinity;
+    -fx-font-size: 2em;
+    -fx-margin: 0 auto;
+}
