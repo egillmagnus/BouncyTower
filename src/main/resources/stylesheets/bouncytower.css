@@ -1,14 +1,19 @@
-.center-vbox {
-    -fx-spacing: 10px; /* Space between buttons */
-    -fx-alignment: center;
-    -fx-padding: 10px;
+.center-grid {
+    -fx-padding: 10% 15%;
+     /*-fx-background-color: red; */
 }
-
-.center-vbox .button {
-    -fx-pref-width: 70%;
+.center-grid .button {
+    -fx-pref-width: 100%;
     -fx-max-width: Infinity;
-    -fx-pref-height: 20%;
+    -fx-pref-height: 1;
     -fx-max-height: Infinity;
-    -fx-font-size: 2em;
-    -fx-margin: 0 auto;
+    -fx-font-size: 1.5em;
+    -fx-margin: 20%;
+}
+.header-text {
+    -fx-font-size: 3.5em;
+    -fx-font-weigth: bold;
+}
+.container-HBox {
+    -fx-background-color: lightgray;
 }

@@ -1,7 +1,6 @@
 package hi.bouncytower.vidmot;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 
 
 public class BouncyTowerController {
@@ -23,6 +22,5 @@ public class BouncyTowerController {
         ViewSwitcher.switchTo(View.MAINMENU);
     }
     public void initialize(){
-
     }
 }
