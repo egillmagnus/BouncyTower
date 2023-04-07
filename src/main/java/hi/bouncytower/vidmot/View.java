@@ -4,7 +4,8 @@ public enum View {
     MAINMENU("mainMenu.fxml"),
     SETTINGS("settings.fxml"),
     CONTROLS("controls.fxml"),
-    HIGHSCORES("highScores.fxml");
+    HIGHSCORES("highScores.fxml"),
+    GAME("game.fxml");
 
     private String fileName;
 

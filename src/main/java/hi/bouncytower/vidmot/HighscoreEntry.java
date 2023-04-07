@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class HighscoreEntry implements Serializable {
     private String playerName;
     private int score;
+
     public HighscoreEntry(String playerName, int score){
         this.playerName = playerName;
         this.score = score;

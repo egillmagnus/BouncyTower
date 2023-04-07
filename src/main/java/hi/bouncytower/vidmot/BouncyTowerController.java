@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 public class BouncyTowerController {
 
     public void onPlayButtonClick(){
-        //TODO
+        ViewSwitcher.switchTo(View.GAME);
     }
     @FXML
     protected void onHighScoreButtonClick() {
