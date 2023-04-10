@@ -4,6 +4,8 @@ import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 import java.lang.reflect.Array;
@@ -21,9 +23,11 @@ public class GameController{
 
     private GraphicsContext gc;
     public void initialize(){
+        System.out.println("GameController initialize() called");
         bolti = new Bolti();
         gc = canvas.getGraphicsContext2D();
-        pallar.add(new Pallur(50,60, 50, 10 ));
+        pallar.add(new Pallur(25,500, 650, 20 ));
+
         gameLoop();
     }
 
@@ -40,16 +44,16 @@ public class GameController{
                 }
                 lastUpdateTime = now;
 
-                bolti.updateNidur(canvas, gravity);
+                bolti.update(canvas, gravity);
 
                 for (Pallur pallur : pallar) {
                     if (boltiAPall(bolti, pallur)) {
                         bolti.updateBoltiAPall(pallur.getY());
-                        lastUpdateTime = now;
                     }
                 }
 
                 teiknaBolta();
+                teiknaPalla();
 
 
 
@@ -60,15 +64,37 @@ public class GameController{
     private void teiknaBolta() {
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        gc.fillOval(bolti.getCenterX() - bolti.getRadius(), bolti.getCenterY() - bolti.getRadius(), bolti.getRadius() * 2, bolti.getRadius() * 2);
         gc.drawImage(bolti.getImage(), bolti.getCenterX(), bolti.getCenterY(), bolti.getRadius(), bolti.getRadius());
+    }
+
+    public void teiknaPalla() {
+        for (Pallur pallur : pallar) {
+            pallur.draw(gc);
+        }
     }
 
     public boolean boltiAPall(Bolti ball, Pallur pallur) {
         if(ball.getCenterX() > pallur.getX()-ball.getRadius() && ball.getCenterX() < pallur.getX()+pallur.getWidth()+ball.getRadius()) {
-            if(ball.getCenterY() > pallur.getY()-ball.getRadius()-2 && ball.getCenterY() < pallur.getY()+pallur.getHeight()+ball.getRadius()+2) {
+            if(ball.getCenterY() > pallur.getY()-ball.getRadius() && ball.getCenterY() < pallur.getY()+pallur.getHeight()+ball.getRadius()) {
                 return true;
             }
         }
         return false;
     }
+
+    @FXML
+    public void handleKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.LEFT) {
+            bolti.moveLeft();
+            System.out.println("Vinstri");
+            event.consume();
+        } else if (event.getCode() == KeyCode.RIGHT) {
+            bolti.moveRight();
+            System.out.println("Hægri");
+            event.consume();
+        }
+        System.out.println("Key pressed");
+    }
+
 }

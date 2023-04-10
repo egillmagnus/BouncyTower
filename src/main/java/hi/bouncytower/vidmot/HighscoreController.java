@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.io.*;
 import java.net.URL;
@@ -86,5 +88,16 @@ public class HighscoreController implements Initializable {
     }
     public void onBackToMenuClick(){
         ViewSwitcher.switchTo(View.MAINMENU);
+    }
+    @FXML
+    public void handleKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.LEFT) {
+            System.out.println("Vinstri");
+            event.consume();
+        } else if (event.getCode() == KeyCode.RIGHT) {
+            System.out.println("Hægri");
+            event.consume();
+        }
+        System.out.println("Key pressed");
     }
 }

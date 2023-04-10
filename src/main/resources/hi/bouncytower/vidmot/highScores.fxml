@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+<AnchorPane onKeyPressed="#handleKeyPress" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.HighscoreController">
    <children>
       <Button layoutX="259.0" layoutY="236.0" mnemonicParsing="false" onAction="#onBackToMenuClick" text="Til baka" />
