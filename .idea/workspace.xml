@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="Added jumping and platform generation">
+    <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="Smávægislagfæringar á leiknum">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Bolti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Bolti.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681314483073</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Smávægislagfæringar á leiknum">
+      <created>1681317541605</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681317541605</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -112,6 +117,7 @@
     <MESSAGE value="Bæta við GameController og game.fxml" />
     <MESSAGE value="Updatea game controller og bæta við Boli og Pallur class" />
     <MESSAGE value="Added jumping and platform generation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added jumping and platform generation" />
+    <MESSAGE value="Smávægislagfæringar á leiknum" />
+    <option name="LAST_COMMIT_MESSAGE" value="Smávægislagfæringar á leiknum" />
   </component>
 </project>

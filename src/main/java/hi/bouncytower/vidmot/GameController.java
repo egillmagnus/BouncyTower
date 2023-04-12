@@ -25,6 +25,8 @@ public class GameController{
     private Bolti bolti;
     private List<Pallur> pallar = new ArrayList<>();
 
+    private double maxHaed = 0;
+
     private int fpalla;
 
 
@@ -100,19 +102,31 @@ public class GameController{
 
 
                 fxScoreCounter.setText("Score: "+ (int)Math.ceil(-bolti.getHaed()));
+                if(-bolti.getHaed()>maxHaed) {
+                    maxHaed = -bolti.getHaed();
+                }
+                if(-maxHaed-bolti.getHaed()>850) {
+                    gameover();
+                }
 
 
                 addPallar();
 
                 gc.setFill(Color.WHITE);
                 gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+                pallar.removeIf(pallur -> pallur.getY()- bolti.getHaed()>800);
 
                 teiknaPalla();
                 teiknaBolta();
 
 
+
             }
         }.start();
+    }
+
+    public void gameover(){
+        //TODO: game over
     }
 
     private void addPallar() {
