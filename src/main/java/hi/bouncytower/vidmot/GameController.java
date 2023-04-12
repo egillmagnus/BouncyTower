@@ -24,6 +24,8 @@ public class GameController{
     private Bolti bolti;
     private List<Pallur> pallar = new ArrayList<>();
 
+    private boolean jumping = false;
+
     private double gravity = 0.5;
 
     private GraphicsContext gc;
@@ -31,6 +33,7 @@ public class GameController{
     public void initialize(){
         System.out.println("GameController initialize() called");
         bolti = new Bolti();
+        canvas.setFocusTraversable(true);
         gc = canvas.getGraphicsContext2D();
         pallar.add(new Pallur(25,500, 650, 20 ));
 
@@ -75,8 +78,12 @@ public class GameController{
                 for (Pallur pallur : pallar) {
                     if (boltiAPall(bolti, pallur)) {
                         bolti.updateBoltiAPall(pallur.getY());
+                        if(jumping){
+                            bolti.jump();
+                        }
                     }
                 }
+                jumping = false;
 
                 teiknaBolta();
                 teiknaPalla();
@@ -113,14 +120,13 @@ public class GameController{
     public void handleKeyPress(KeyEvent event) {
         if (event.getCode() == KeyCode.LEFT) {
             bolti.moveLeft();
-            System.out.println("Vinstri");
             event.consume();
         } else if (event.getCode() == KeyCode.RIGHT) {
             bolti.moveRight();
-            System.out.println("Hægri");
             event.consume();
+        } else if (event.getCode() == KeyCode.UP) {
+            jumping = true;
         }
-        System.out.println("Key pressed");
     }
 
 }

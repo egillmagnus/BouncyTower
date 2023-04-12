@@ -70,6 +70,11 @@ public class Bolti extends Circle {
         }
     }
 
+
+    public void jump() {
+        speedY = -20;
+    }
+
     public void moveRight() {
         if(speedX + 1 <= maxSpeedX) {
             if(speedX < 0 && speedX < -1.5) {
