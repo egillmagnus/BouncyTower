@@ -14,6 +14,9 @@ public class Pallur extends Rectangle {
 
 
     String litur = "#999999";
+
+    double yHnit;
+
     /**
      * Basic smiður bara
      * @param x
@@ -36,10 +39,17 @@ public class Pallur extends Rectangle {
      * teiknar pallinn á GraphicsContext
      * @param gc
      */
-    public void draw(GraphicsContext gc) {
+    public void draw(GraphicsContext gc, double rhaed, double yhaed) {
         gc.setFill(Paint.valueOf(litur));
-        gc.fillRect(getX(), getY(), getWidth(), getHeight());
+        yHnit = getY() - rhaed + yhaed ;
+        gc.fillRect(getX(), yHnit, getWidth(), getHeight());
     }
+
+
+    public double getRettY() {
+        return yHnit;
+    }
+
 
     /**
      * gettari á Bounds fyrir intersects í Controller

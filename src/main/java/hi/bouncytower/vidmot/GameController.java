@@ -12,10 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameController{
 
@@ -23,6 +20,9 @@ public class GameController{
     private Canvas canvas;
     private Bolti bolti;
     private List<Pallur> pallar = new ArrayList<>();
+
+    private int fpalla;
+
 
     private boolean jumping = false;
 
@@ -35,7 +35,8 @@ public class GameController{
         bolti = new Bolti();
         canvas.setFocusTraversable(true);
         gc = canvas.getGraphicsContext2D();
-        pallar.add(new Pallur(25,500, 650, 20 ));
+        pallar.add(new Pallur(25,500, 650, 20));
+        fpalla = 1;
 
         canvas.sceneProperty().addListener(new ChangeListener<Scene>() {
             @Override
@@ -72,44 +73,62 @@ public class GameController{
                     return;
                 }
                 lastUpdateTime = now;
-
-                bolti.update(canvas, gravity);
-
-                for (Pallur pallur : pallar) {
-                    if (boltiAPall(bolti, pallur)) {
-                        bolti.updateBoltiAPall(pallur.getY());
-                        if(jumping){
-                            bolti.jump();
+                boolean apallinuna = false;
+                if(bolti.getSpeedY()>=0) {
+                    for (Pallur pallur : pallar) {
+                        if (boltiAPall(bolti, pallur)) {
+                            bolti.updateBoltiAPall(pallur, canvas);
+                            apallinuna = true;
+                            if(jumping){
+                                bolti.jump();
+                                jumping = false;
+                            }
                         }
                     }
                 }
-                jumping = false;
+                if(!apallinuna) {
+                    bolti.update(canvas, gravity);
+                }
 
-                teiknaBolta();
+
+                System.out.println(bolti.getCenterY()+", "+bolti.getHaed());
+                addPallar();
+
+                gc.setFill(Color.WHITE);
+                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
                 teiknaPalla();
-
+                teiknaBolta();
 
 
             }
         }.start();
     }
 
+    private void addPallar() {
+        if(-fpalla*100 < bolti.getHaed() - bolti.getCenterY() + 800) {
+            System.out.println("Palli bætt við");
+            fpalla++;
+            Random random = new Random();
+            double platformX = random.nextDouble() * (canvas.getWidth() - 100);
+            pallar.add(new Pallur(platformX, (-fpalla*100)+600, Math.max(75, random.nextDouble() * 250 ) , 20 ));
+        }
+    }
+
     private void teiknaBolta() {
-        gc.setFill(Color.WHITE);
-        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        gc.fillOval(bolti.getCenterX() - bolti.getRadius(), bolti.getCenterY() - bolti.getRadius(), bolti.getRadius() * 2, bolti.getRadius() * 2);
         gc.drawImage(bolti.getImage(), bolti.getCenterX(), bolti.getCenterY(), bolti.getRadius(), bolti.getRadius());
     }
 
     public void teiknaPalla() {
         for (Pallur pallur : pallar) {
-            pallur.draw(gc);
+            pallur.draw(gc, bolti.getHaed(), bolti.getCenterY());
         }
     }
 
     public boolean boltiAPall(Bolti ball, Pallur pallur) {
-        if(ball.getCenterX() > pallur.getX()-ball.getRadius() && ball.getCenterX() < pallur.getX()+pallur.getWidth()+ball.getRadius()) {
-            if(ball.getCenterY() > pallur.getY()-ball.getRadius() && ball.getCenterY() < pallur.getY()+pallur.getHeight()+ball.getRadius()) {
+        if(ball.getCenterX() > pallur.getX()-ball.getRadius() && ball.getCenterX() < pallur.getX()+pallur.getWidth()) {
+            if(ball.getHaed() > pallur.getY()-ball.getRadius() && ball.getHaed() < pallur.getY()+pallur.getHeight()) {
+                System.out.println("Bolti a pall "+ ball.getHaed()+ ", "+pallur.getY());
                 return true;
             }
         }

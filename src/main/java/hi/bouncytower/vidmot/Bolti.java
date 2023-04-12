@@ -19,24 +19,56 @@ public class Bolti extends Circle {
 
     private boolean aPalli;
 
+    private double raunHaed;
+
 
     Bolti() {
         super(100, 100, 40);
         speedX = 0;
         speedY = 0;
+        raunHaed = 0;
     }
 
     /**
      * Ef bolti er á palli
      */
-    public void updateBoltiAPall(double yHnitPalls) {
-        setCenterY(yHnitPalls-radius);
+    public void updateBoltiAPall(Pallur pallur, Canvas canvas) {
+        raunHaed = pallur.getY() - radius;
+        setCenterY(pallur.getRettY() - radius);
+        speedY = 0;
+        if (getCenterX() < getRadius()) {
+            setCenterX(getRadius());
+            speedX = -speedX;
+        } else if (getCenterX() > canvas.getWidth() - getRadius()) {
+            setCenterX(canvas.getWidth() - getRadius());
+            speedX = -speedX;
+        }
+        setCenterX(getCenterX() + speedX);
         aPalli = true;
+    }
+
+    public double getHaed() {
+        return raunHaed;
+    }
+
+    public double getSpeedY() {
+        return speedY;
     }
 
     public void update(Canvas canvas, double gravity) {
         speedY = Math.min(speedY, 25);
-        setCenterY(getCenterY() + speedY);
+        double oldCenter = getCenterY();
+        double maxHeadASkja = 150;
+        if(oldCenter + speedY < maxHeadASkja) {
+            setCenterY(maxHeadASkja);
+        } else if(oldCenter + speedY > canvas.getHeight() - maxHeadASkja) {
+            setCenterY(canvas.getHeight() - maxHeadASkja);
+        }
+        else {
+            setCenterY(oldCenter + speedY);
+        }
+
+        raunHaed+=speedY;
 
         if (getCenterX() < getRadius()) {
             setCenterX(getRadius());
@@ -72,6 +104,8 @@ public class Bolti extends Circle {
 
 
     public void jump() {
+        setCenterY(getCenterY() - 1);
+        raunHaed-=1;
         speedY = -20;
     }
 
