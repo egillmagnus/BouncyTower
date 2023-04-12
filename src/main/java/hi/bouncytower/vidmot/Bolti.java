@@ -10,7 +10,8 @@ public class Bolti extends Circle {
     private double speedX;
     private double speedY;
 
-    private String imageFilePath = "C:/Users/toegi/Documents/V23/HBV201G/Stóra verkefnit/BouncyTower/src/main/Images/ball_stop.png";
+    //private String imageFilePath = "C:/Users/toegi/Documents/V23/HBV201G/Stóra verkefnit/BouncyTower/src/main/Images/ball_stop.png";
+    private String imageFilePath = getClass().getResource("/Images/ball_stop.png").toExternalForm();
 
 
     private double radius = 40;

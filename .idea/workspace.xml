@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="Updatea game controller og bæta við Boli og Pallur class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Stefna.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Images/ball_stop.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/ball_stop.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Bolti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Bolti.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/BouncyTowerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/BouncyTowerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/BouncyTowerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/BouncyTowerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/HighscoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/HighscoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/controls.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/controls.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/highScores.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/highScores.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/mainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/mainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/settings.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,19 +43,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/toegi/Documents/V23/HBV201G/Verkefni4/BounceDown"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/toegi/Documents/V23/HBV201G/Verkefni4/BounceDown&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\toegi\Documents\V23\HBV201G\Stóra verkefnit\BouncyTower" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="C:\Users\toegi\Documents\V23\HBV201G\Stóra verkefnit\BouncyTower\src\main\Images" />
     </key>
   </component>

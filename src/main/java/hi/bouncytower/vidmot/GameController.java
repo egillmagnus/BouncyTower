@@ -1,7 +1,10 @@
 package hi.bouncytower.vidmot;
 
 import javafx.animation.AnimationTimer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -10,7 +13,9 @@ import javafx.scene.paint.Color;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GameController{
 
@@ -22,6 +27,7 @@ public class GameController{
     private double gravity = 0.5;
 
     private GraphicsContext gc;
+    private static Map<KeyCode,Stefna> takkaMap = new HashMap<>();
     public void initialize(){
         System.out.println("GameController initialize() called");
         bolti = new Bolti();
@@ -29,8 +35,28 @@ public class GameController{
         gc = canvas.getGraphicsContext2D();
         pallar.add(new Pallur(25,500, 650, 20 ));
 
-        gameLoop();
+        canvas.sceneProperty().addListener(new ChangeListener<Scene>() {
+            @Override
+            public void changed(ObservableValue<? extends Scene> observableValue, Scene oldScene, Scene newScene) {
+                if (newScene != null) {
+                    orvatakkar(newScene);
+                    gameLoop();
+                }
+            }
+        });
     }
+    public void orvatakkar(Scene s){
+        takkaMap.put(KeyCode.LEFT, Stefna.VINSTRI);
+        takkaMap.put(KeyCode.RIGHT, Stefna.HAEGRI);
+        takkaMap.put(KeyCode.DOWN, Stefna.NIDUR);
+        s.addEventFilter(KeyEvent.ANY,
+                event -> {
+                    handleKeyPress(event);
+                });
+        /*s.setOnKeyReleased(event ->{
+            leikbord.setStefna(takkaMap.get(KeyCode.DOWN));
+        });*/
+    };
 
     private void gameLoop(){
         new AnimationTimer() {
