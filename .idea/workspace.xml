@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="Updatea game controller og bæta við Boli og Pallur class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/ControlsController.java" afterDir="false" />
+    <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="Added jumping and platform generation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/controls.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/controls.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/stylesheets/bouncytower.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/stylesheets/bouncytower.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Bolti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Bolti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,15 +42,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_directory_selection": "/home/sturla/Sk/Vidmot/BouncyTower/src/main/java/hi/bouncytower/vidmot",
-    "last_opened_file_path": "C:/Users/toegi/Documents/V23/HBV201G/Verkefni4/BounceDown"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/sturla/Sk/Vidmot/BouncyTower/src/main/java/hi/bouncytower/vidmot&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/toegi/Documents/V23/HBV201G/Verkefni4/BounceDown&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\toegi\Documents\V23\HBV201G\Stóra verkefnit\BouncyTower" />
@@ -97,13 +97,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681166978524</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added jumping and platform generation">
+      <created>1681314483073</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681314483073</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="Bæta við GameController og game.fxml" />
     <MESSAGE value="Updatea game controller og bæta við Boli og Pallur class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updatea game controller og bæta við Boli og Pallur class" />
+    <MESSAGE value="Added jumping and platform generation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added jumping and platform generation" />
   </component>
 </project>

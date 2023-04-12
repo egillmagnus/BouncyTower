@@ -23,7 +23,7 @@ public class Bolti extends Circle {
 
 
     Bolti() {
-        super(100, 100, 40);
+        super(100, 0, 40);
         speedX = 0;
         speedY = 0;
         raunHaed = 0;
@@ -36,14 +36,6 @@ public class Bolti extends Circle {
         raunHaed = pallur.getY() - radius;
         setCenterY(pallur.getRettY() - radius);
         speedY = 0;
-        if (getCenterX() < getRadius()) {
-            setCenterX(getRadius());
-            speedX = -speedX;
-        } else if (getCenterX() > canvas.getWidth() - getRadius()) {
-            setCenterX(canvas.getWidth() - getRadius());
-            speedX = -speedX;
-        }
-        setCenterX(getCenterX() + speedX);
         aPalli = true;
     }
 
@@ -67,7 +59,6 @@ public class Bolti extends Circle {
         else {
             setCenterY(oldCenter + speedY);
         }
-
         raunHaed+=speedY;
 
         if (getCenterX() < getRadius()) {

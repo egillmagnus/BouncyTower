@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -18,6 +19,9 @@ public class GameController{
 
     @FXML
     private Canvas canvas;
+
+    @FXML
+    private Label fxScoreCounter;
     private Bolti bolti;
     private List<Pallur> pallar = new ArrayList<>();
 
@@ -26,8 +30,11 @@ public class GameController{
 
     private boolean jumping = false;
 
+    private long jumpTime = 0;
+
     private double gravity = 0.5;
 
+    private long lastUpdateTime = -1;
     private GraphicsContext gc;
     private static Map<KeyCode,Stefna> takkaMap = new HashMap<>();
     public void initialize(){
@@ -35,7 +42,7 @@ public class GameController{
         bolti = new Bolti();
         canvas.setFocusTraversable(true);
         gc = canvas.getGraphicsContext2D();
-        pallar.add(new Pallur(25,500, 650, 20));
+        pallar.add(new Pallur(25,40, 650, 20));
         fpalla = 1;
 
         canvas.sceneProperty().addListener(new ChangeListener<Scene>() {
@@ -49,6 +56,7 @@ public class GameController{
         });
     }
     public void orvatakkar(Scene s){
+        /*
         takkaMap.put(KeyCode.LEFT, Stefna.VINSTRI);
         takkaMap.put(KeyCode.RIGHT, Stefna.HAEGRI);
         takkaMap.put(KeyCode.DOWN, Stefna.NIDUR);
@@ -63,7 +71,6 @@ public class GameController{
 
     private void gameLoop(){
         new AnimationTimer() {
-            long lastUpdateTime = -1;
 
             @Override
             public void handle(long now) {
@@ -72,13 +79,17 @@ public class GameController{
                     lastUpdateTime = now;
                     return;
                 }
+
                 lastUpdateTime = now;
-                boolean apallinuna = false;
+                if(lastUpdateTime - jumpTime > 32026200) {
+                    jumping = false;
+                }
+                bolti.update(canvas, gravity);
+                System.out.println(lastUpdateTime - jumpTime);
                 if(bolti.getSpeedY()>=0) {
                     for (Pallur pallur : pallar) {
                         if (boltiAPall(bolti, pallur)) {
                             bolti.updateBoltiAPall(pallur, canvas);
-                            apallinuna = true;
                             if(jumping){
                                 bolti.jump();
                                 jumping = false;
@@ -86,12 +97,11 @@ public class GameController{
                         }
                     }
                 }
-                if(!apallinuna) {
-                    bolti.update(canvas, gravity);
-                }
 
 
-                System.out.println(bolti.getCenterY()+", "+bolti.getHaed());
+                fxScoreCounter.setText("Score: "+ (int)Math.ceil(-bolti.getHaed()));
+
+
                 addPallar();
 
                 gc.setFill(Color.WHITE);
@@ -107,11 +117,10 @@ public class GameController{
 
     private void addPallar() {
         if(-fpalla*100 < bolti.getHaed() - bolti.getCenterY() + 800) {
-            System.out.println("Palli bætt við");
             fpalla++;
             Random random = new Random();
             double platformX = random.nextDouble() * (canvas.getWidth() - 100);
-            pallar.add(new Pallur(platformX, (-fpalla*100)+600, Math.max(75, random.nextDouble() * 250 ) , 20 ));
+            pallar.add(new Pallur(platformX, (-fpalla*100)+140, Math.max(100, random.nextDouble() * 250 ) , 20 ));
         }
     }
 
@@ -128,7 +137,6 @@ public class GameController{
     public boolean boltiAPall(Bolti ball, Pallur pallur) {
         if(ball.getCenterX() > pallur.getX()-ball.getRadius() && ball.getCenterX() < pallur.getX()+pallur.getWidth()) {
             if(ball.getHaed() > pallur.getY()-ball.getRadius() && ball.getHaed() < pallur.getY()+pallur.getHeight()) {
-                System.out.println("Bolti a pall "+ ball.getHaed()+ ", "+pallur.getY());
                 return true;
             }
         }
@@ -145,6 +153,7 @@ public class GameController{
             event.consume();
         } else if (event.getCode() == KeyCode.UP) {
             jumping = true;
+            jumpTime = lastUpdateTime;
         }
     }
 
