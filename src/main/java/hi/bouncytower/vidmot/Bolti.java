@@ -72,7 +72,7 @@ public class Bolti extends Circle {
 
 
     public void jump() {
-
+        speedY = -20;
     }
 
     public void moveRight() {

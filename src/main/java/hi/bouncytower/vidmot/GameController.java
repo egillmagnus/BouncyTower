@@ -24,6 +24,8 @@ public class GameController{
     private Bolti bolti;
     private List<Pallur> pallar = new ArrayList<>();
 
+    private boolean jumping = false;
+
     private double gravity = 0.5;
 
     private GraphicsContext gc;
@@ -76,8 +78,12 @@ public class GameController{
                 for (Pallur pallur : pallar) {
                     if (boltiAPall(bolti, pallur)) {
                         bolti.updateBoltiAPall(pallur.getY());
+                        if(jumping){
+                            bolti.jump();
+                        }
                     }
                 }
+                jumping = false;
 
                 teiknaBolta();
                 teiknaPalla();
@@ -119,7 +125,7 @@ public class GameController{
             bolti.moveRight();
             event.consume();
         } else if (event.getCode() == KeyCode.UP) {
-            bolti.jump();
+            jumping = true;
         }
     }
 
