@@ -15,7 +15,7 @@ import javafx.scene.paint.Color;
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class GameController{
+public class GameController implements ControllerWithModel {
 
     @FXML
     private Canvas canvas;
@@ -27,14 +27,25 @@ public class GameController{
 
     private double maxHaed = 0;
 
+    private double currentmax = 0;
+
     private int fpalla;
+
+    private boolean isRunning;
 
 
     private boolean jumping = false;
 
+    private int pausecount;
+
     private long jumpTime = 0;
 
     private double gravity = 0.5;
+
+    private AnimationTimer animationTimer;
+
+    private Game model;
+
 
     private long lastUpdateTime = -1;
     private GraphicsContext gc;
@@ -42,12 +53,15 @@ public class GameController{
     public void initialize(){
         System.out.println("GameController initialize() called");
         bolti = new Bolti();
+        model = new Game();
         canvas.setFocusTraversable(true);
         gc = canvas.getGraphicsContext2D();
         pallar.add(new Pallur(25,40, 650, 20));
         fpalla = 1;
+        isRunning = true;
+        pausecount = 0;
 
-        canvas.sceneProperty().addListener(new ChangeListener<Scene>() {
+        /*canvas.sceneProperty().addListener(new ChangeListener<Scene>() {
             @Override
             public void changed(ObservableValue<? extends Scene> observableValue, Scene oldScene, Scene newScene) {
                 if (newScene != null) {
@@ -55,7 +69,12 @@ public class GameController{
                     gameLoop();
                 }
             }
-        });
+        });*/
+        gameLoop();
+    }
+
+    public void setModel(Game model) {
+        this.model = model;
     }
     public void orvatakkar(Scene s){
         /*
@@ -72,7 +91,7 @@ public class GameController{
     };
 
     private void gameLoop(){
-        new AnimationTimer() {
+        animationTimer = new AnimationTimer() {
 
             @Override
             public void handle(long now) {
@@ -87,7 +106,6 @@ public class GameController{
                     jumping = false;
                 }
                 bolti.update(canvas, gravity);
-                System.out.println(lastUpdateTime - jumpTime);
                 if(bolti.getSpeedY()>=0) {
                     for (Pallur pallur : pallar) {
                         if (boltiAPall(bolti, pallur)) {
@@ -101,11 +119,12 @@ public class GameController{
                 }
 
 
-                fxScoreCounter.setText("Score: "+ (int)Math.ceil(-bolti.getHaed()));
-                if(-bolti.getHaed()>maxHaed) {
-                    maxHaed = -bolti.getHaed();
+                fxScoreCounter.setText("Score: "+ (int)Math.ceil(-maxHaed));
+                if(bolti.getHaed()<maxHaed) {
+                    maxHaed = bolti.getHaed();
                 }
-                if(-maxHaed-bolti.getHaed()>850) {
+                if(bolti.getHaed()-maxHaed>850) {
+                    stop();
                     gameover();
                 }
 
@@ -118,15 +137,21 @@ public class GameController{
 
                 teiknaPalla();
                 teiknaBolta();
+                if(bolti.getSpeedY() <= 0) {
+                    currentmax = 0;
+                }
 
-
+                if(bolti.getHaed() < currentmax) {
+                    currentmax = bolti.getHaed();
+                }
 
             }
-        }.start();
+        };
+        animationTimer.start();
     }
 
     public void gameover(){
-        //TODO: game over
+        animationTimer.stop();
     }
 
     private void addPallar() {
@@ -150,24 +175,47 @@ public class GameController{
 
     public boolean boltiAPall(Bolti ball, Pallur pallur) {
         if(ball.getCenterX() > pallur.getX()-ball.getRadius() && ball.getCenterX() < pallur.getX()+pallur.getWidth()) {
-            if(ball.getHaed() > pallur.getY()-ball.getRadius() && ball.getHaed() < pallur.getY()+pallur.getHeight()) {
+            if(ball.getHaed() > pallur.getY()-ball.getRadius() && ball.getHaed() < pallur.getY()+pallur.getHeight() && currentmax < pallur.getY()-20) {
                 return true;
             }
         }
         return false;
     }
 
+    public void pauseGame() {
+        if(isRunning) {
+            teiknaBakgrunn();
+            isRunning = false;
+            animationTimer.stop();
+        } else {
+            animationTimer.start();
+            isRunning = true;
+        }
+    }
+
+    public void teiknaBakgrunn() {
+        gc.setFill(Color.rgb(0, 0, 0, 0.5));
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+    }
+
     @FXML
     public void handleKeyPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.LEFT) {
+        KeyCode code = event.getCode();
+        if (code == KeyCode.LEFT || code == KeyCode.A) {
             bolti.moveLeft();
             event.consume();
-        } else if (event.getCode() == KeyCode.RIGHT) {
+        } else if (event.getCode() == KeyCode.RIGHT || code == KeyCode.D) {
             bolti.moveRight();
             event.consume();
-        } else if (event.getCode() == KeyCode.UP) {
+        } else if (event.getCode() == KeyCode.UP || code == KeyCode.W || code == KeyCode.SPACE) {
             jumping = true;
             jumpTime = lastUpdateTime;
+        } else if (code == KeyCode.ESCAPE || code == KeyCode.P) {
+            pausecount++;
+            if(pausecount == 2) {
+                pausecount = 0;
+                pauseGame();
+            }
         }
     }
 

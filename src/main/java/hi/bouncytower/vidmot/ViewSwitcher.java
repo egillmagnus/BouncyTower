@@ -11,6 +11,8 @@ import java.util.Map;
 
 public class ViewSwitcher {
     private static Map<View, Parent> cache = new HashMap<>();
+
+    private static final Map<View, Object> controllers = new HashMap<>();
     private static Scene scene;
 
     public static void setScene(Scene scene) {
@@ -38,4 +40,28 @@ public class ViewSwitcher {
             e.printStackTrace();
         }
     }
+
+    public static void switchTo(View view, Game model) {
+        if (scene == null) {
+            System.out.println("No scene was set");
+            return;
+        }
+
+        try {
+            Parent root;
+            FXMLLoader loader = new FXMLLoader(ViewSwitcher.class.getResource(view.getFileName()));
+            root = loader.load();
+            Object controller = loader.getController();
+            if (controller instanceof ControllerWithModel) {
+                ((ControllerWithModel) controller).setModel(model); // set the model
+            }
+            controllers.put(view, controller); // save the controller
+            cache.put(view, root); // save the view
+            scene.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

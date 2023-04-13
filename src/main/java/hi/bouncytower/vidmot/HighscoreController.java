@@ -13,11 +13,13 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class HighscoreController implements Initializable {
+public class HighscoreController implements Initializable, ControllerWithModel {
     @FXML
     private ListView<String> highscoreListView;
     private static final String HIGHSCORE_FILE = "highscores.ser";
     private HighscoreTable highscoreTable;
+
+    private Game model;
     private ObservableList<String> highscoreItems = FXCollections.observableArrayList();
 
     @Override
@@ -81,6 +83,11 @@ public class HighscoreController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void setModel(Game model) {
+        this.model = model;
+    }
+
     public void addHighscore(String playerName, int score) {
         highscoreTable.addHighscore(playerName, score);
         saveHighscoreTable();
@@ -88,16 +95,5 @@ public class HighscoreController implements Initializable {
     }
     public void onBackToMenuClick(){
         ViewSwitcher.switchTo(View.MAINMENU);
-    }
-    @FXML
-    public void handleKeyPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.LEFT) {
-            System.out.println("Vinstri");
-            event.consume();
-        } else if (event.getCode() == KeyCode.RIGHT) {
-            System.out.println("Hægri");
-            event.consume();
-        }
-        System.out.println("Key pressed");
     }
 }

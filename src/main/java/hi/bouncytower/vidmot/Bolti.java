@@ -61,8 +61,8 @@ public class Bolti extends Circle {
         }
         raunHaed+=speedY;
 
-        if (getCenterX() < getRadius()) {
-            setCenterX(getRadius());
+        if (getCenterX() <=0 ) {
+            setCenterX(0);
             speedX = -speedX;
         } else if (getCenterX() > canvas.getWidth() - getRadius()) {
             setCenterX(canvas.getWidth() - getRadius());
@@ -97,7 +97,7 @@ public class Bolti extends Circle {
     public void jump() {
         setCenterY(getCenterY() - 1);
         raunHaed-=1;
-        speedY = -20;
+        speedY = -14-(speedX*speedX)/3;
     }
 
     public void moveRight() {
