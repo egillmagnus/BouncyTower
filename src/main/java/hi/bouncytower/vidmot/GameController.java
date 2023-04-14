@@ -305,7 +305,6 @@ public class GameController implements ControllerWithModel {
             bolti.moveRight();
             event.consume();
         } else if (event.getCode() == KeyCode.UP || code == KeyCode.W || code == KeyCode.SPACE && isRunning) {
-            System.out.println("Jumping");
             jumping = true;
             jumpTime = lastUpdateTime;
         } else if (code == KeyCode.ESCAPE || code == KeyCode.P && !gameOver) {

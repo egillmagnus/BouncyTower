@@ -23,9 +23,8 @@ public class Background {
     public void draw(GraphicsContext gc, Bolti bolti) {
         double posVeggir;
         double posBackVeggir;
-        if(count%100==0) {
+        if(count%10==0) {
             if(bolti.moveBackground()) {
-                System.out.println("Teiknar Bakgrunn");
                 posVeggir = (-bolti.getHaed() + 800) % 800;
                 posBackVeggir = (lastPosBack+((posVeggir-lastPosHlidar)/2)) % 800;
             } else {

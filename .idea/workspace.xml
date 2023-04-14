@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="Implemented adding to leaderboard, game over menu and updated viewswitcher">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Background.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/background_wall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/bricks_background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Bolti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Bolti.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" afterDir="false" />
-    </list>
+    <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="Added moving background to game" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681432133202</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added moving background to game">
+      <created>1681489314290</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1681489314290</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +158,7 @@
     <MESSAGE value="Added score counter, platform deletion and gameover constraints" />
     <MESSAGE value="Added pausing and gameover functionality" />
     <MESSAGE value="Implemented adding to leaderboard, game over menu and updated viewswitcher" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented adding to leaderboard, game over menu and updated viewswitcher" />
+    <MESSAGE value="Added moving background to game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added moving background to game" />
   </component>
 </project>
