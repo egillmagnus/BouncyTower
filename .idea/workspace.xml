@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="Added pausing and gameover functionality">
+    <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="Implemented adding to leaderboard, game over menu and updated viewswitcher">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/HighscoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/HighscoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/ViewSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/ViewSwitcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681378553979</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implemented adding to leaderboard, game over menu and updated viewswitcher">
+      <created>1681432133202</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681432133202</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,6 +151,7 @@
     <MESSAGE value="Smávægislagfæringar á leiknum" />
     <MESSAGE value="Added score counter, platform deletion and gameover constraints" />
     <MESSAGE value="Added pausing and gameover functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added pausing and gameover functionality" />
+    <MESSAGE value="Implemented adding to leaderboard, game over menu and updated viewswitcher" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented adding to leaderboard, game over menu and updated viewswitcher" />
   </component>
 </project>
