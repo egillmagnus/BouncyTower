@@ -13,6 +13,8 @@ public class Bolti extends Circle {
     //private String imageFilePath = "C:/Users/toegi/Documents/V23/HBV201G/Stóra verkefnit/BouncyTower/src/main/Images/ball_stop.png";
     private String imageFilePath = getClass().getResource("/Images/ball_stop.png").toExternalForm();
 
+    private boolean moveBackground;
+
 
     private double radius = 40;
     private double maxSpeedX = 5;
@@ -51,21 +53,24 @@ public class Bolti extends Circle {
         speedY = Math.min(speedY, 25);
         double oldCenter = getCenterY();
         double maxHeadASkja = 150;
+        moveBackground = false;
         if(oldCenter + speedY < maxHeadASkja) {
             setCenterY(maxHeadASkja);
+            moveBackground = true;
         } else if(oldCenter + speedY > canvas.getHeight() - maxHeadASkja) {
             setCenterY(canvas.getHeight() - maxHeadASkja);
+            moveBackground = true;
         }
         else {
             setCenterY(oldCenter + speedY);
         }
         raunHaed+=speedY;
 
-        if (getCenterX() <=0 ) {
-            setCenterX(0);
+        if (getCenterX() <=90 ) {
+            setCenterX(90);
             speedX = -speedX;
-        } else if (getCenterX() > canvas.getWidth() - getRadius()) {
-            setCenterX(canvas.getWidth() - getRadius());
+        } else if (getCenterX() > canvas.getWidth() - getRadius()-90) {
+            setCenterX(canvas.getWidth() - getRadius()-90);
             speedX = -speedX;
         }
         setCenterX(getCenterX() + speedX);
@@ -91,6 +96,10 @@ public class Bolti extends Circle {
                 speedX -= 1;
             }
         }
+    }
+
+    public boolean moveBackground() {
+        return moveBackground;
     }
 
 

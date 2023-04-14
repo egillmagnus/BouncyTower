@@ -1,22 +1,19 @@
 package hi.bouncytower.vidmot;
 
 import javafx.animation.AnimationTimer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 import static hi.bouncytower.vidmot.View.HIGHSCORES;
@@ -56,6 +53,8 @@ public class GameController implements ControllerWithModel {
     private VBox fxGameOverVBox;
     @FXML
     private Text fxNameLengthNotification;
+
+    private Background background;
     private Bolti bolti;
     private List<Pallur> pallar;
 
@@ -68,6 +67,8 @@ public class GameController implements ControllerWithModel {
     private boolean isRunning = false;
 
     private Boolean gameOver;
+
+    private double sidastaHaedBolta = 0;
 
     private boolean jumping = false;
 
@@ -89,6 +90,7 @@ public class GameController implements ControllerWithModel {
         bolti = new Bolti();
         model = new Game();
         gameOver= false;
+        background = new Background();
         maxHaed = 0;
         setVisabilityGameOver(false);
         canvas.setFocusTraversable(true);
@@ -156,8 +158,7 @@ public class GameController implements ControllerWithModel {
 
                 addPallar();
 
-                gc.setFill(Color.WHITE);
-                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+                teiknabakgrunn();
                 pallar.removeIf(pallur -> pallur.getY()- bolti.getHaed()>800);
 
                 teiknaPalla();
@@ -171,7 +172,7 @@ public class GameController implements ControllerWithModel {
                 }
 
                 if(gameOver || !isRunning) {
-                    teiknaBakgrunn();
+                    teiknaOverlay();
                     animationTimer.stop();
                 }
 
@@ -181,7 +182,7 @@ public class GameController implements ControllerWithModel {
     }
 
     public void gameover(){
-        teiknaBakgrunn();
+        teiknaOverlay();
         model.setScore((int)(-maxHaed));
         setVisabilityGameOver(true);
         gameOver=true;
@@ -229,6 +230,10 @@ public class GameController implements ControllerWithModel {
         fxNameTextField.setMouseTransparent(!visable);
     }
 
+    public void teiknabakgrunn() {
+        background.draw(gc, bolti);
+    }
+
 
     public void fxResumeClickedHandler() {
         pauseGame();
@@ -247,7 +252,7 @@ public class GameController implements ControllerWithModel {
         if(-fpalla*100 < bolti.getHaed() - bolti.getCenterY() + 800) {
             fpalla++;
             Random random = new Random();
-            double platformX = random.nextDouble() * (canvas.getWidth() - 100);
+            double platformX = 90+(random.nextDouble() * (canvas.getWidth() - 340));
             pallar.add(new Pallur(platformX, (-fpalla*100)+140, Math.max(100, random.nextDouble() * 250 ) , 20 ));
         }
     }
@@ -273,7 +278,7 @@ public class GameController implements ControllerWithModel {
 
     public void pauseGame() {
         if(isRunning) {
-            teiknaBakgrunn();
+            teiknaOverlay();
             setVisabilityPauseMenu(true);
             isRunning = false;
             animationTimer.stop();
@@ -284,7 +289,7 @@ public class GameController implements ControllerWithModel {
         }
     }
 
-    public void teiknaBakgrunn() {
+    public void teiknaOverlay() {
         gc.setFill(Color.rgb(0, 0, 0, 0.5));
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         animationTimer.stop();
@@ -300,6 +305,7 @@ public class GameController implements ControllerWithModel {
             bolti.moveRight();
             event.consume();
         } else if (event.getCode() == KeyCode.UP || code == KeyCode.W || code == KeyCode.SPACE && isRunning) {
+            System.out.println("Jumping");
             jumping = true;
             jumpTime = lastUpdateTime;
         } else if (code == KeyCode.ESCAPE || code == KeyCode.P && !gameOver) {
