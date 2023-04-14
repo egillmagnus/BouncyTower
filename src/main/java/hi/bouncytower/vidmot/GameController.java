@@ -7,23 +7,57 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.lang.reflect.Array;
 import java.util.*;
 
+import static hi.bouncytower.vidmot.View.HIGHSCORES;
+import static hi.bouncytower.vidmot.View.MAINMENU;
+
 public class GameController implements ControllerWithModel {
 
     @FXML
+    public Label fxEnterNameLabel;
+    @FXML
+    public TextField fxNameTextField;
+    @FXML
+    public Button fxEnterNameContinueButton;
+    @FXML
+    public VBox fxEnterNameVBox;
+    @FXML
     private Canvas canvas;
-
     @FXML
     private Label fxScoreCounter;
+    @FXML
+    private Label fxPauseLabel;
+    @FXML
+    private Button fxResumeButton;
+    @FXML
+    private Button fxBackToMenuButton;
+    @FXML
+    private Label fxGameOverLabel;
+    @FXML
+    private Button fxPlayAgainButton;
+    @FXML
+    private Button fxAddHighscoreButton;
+    @FXML
+    private Button fxGameOverBackToMenuButton;
+    @FXML
+    private VBox fxPauseMenuVBox;
+    @FXML
+    private VBox fxGameOverVBox;
+    @FXML
+    private Text fxNameLengthNotification;
     private Bolti bolti;
-    private List<Pallur> pallar = new ArrayList<>();
+    private List<Pallur> pallar;
 
     private double maxHaed = 0;
 
@@ -31,12 +65,12 @@ public class GameController implements ControllerWithModel {
 
     private int fpalla;
 
-    private boolean isRunning;
+    private boolean isRunning = false;
 
+    private Boolean gameOver;
 
     private boolean jumping = false;
 
-    private int pausecount;
 
     private long jumpTime = 0;
 
@@ -54,41 +88,31 @@ public class GameController implements ControllerWithModel {
         System.out.println("GameController initialize() called");
         bolti = new Bolti();
         model = new Game();
+        gameOver= false;
+        maxHaed = 0;
+        setVisabilityGameOver(false);
         canvas.setFocusTraversable(true);
         gc = canvas.getGraphicsContext2D();
+        pallar = new ArrayList<>();
         pallar.add(new Pallur(25,40, 650, 20));
         fpalla = 1;
         isRunning = true;
-        pausecount = 0;
-
-        /*canvas.sceneProperty().addListener(new ChangeListener<Scene>() {
-            @Override
-            public void changed(ObservableValue<? extends Scene> observableValue, Scene oldScene, Scene newScene) {
-                if (newScene != null) {
-                    orvatakkar(newScene);
-                    gameLoop();
-                }
-            }
-        });*/
         gameLoop();
+    }
+
+    public void fxEnterNameContinueClickedHandler() {
+        String name = fxNameTextField.getText();
+        if(name.length() < 1) {
+            fxNameLengthNotification.setVisible(true);
+        } else {
+            model.setPlayerName(name);
+            ViewSwitcher.switchTo(HIGHSCORES, model);
+        }
     }
 
     public void setModel(Game model) {
         this.model = model;
     }
-    public void orvatakkar(Scene s){
-        /*
-        takkaMap.put(KeyCode.LEFT, Stefna.VINSTRI);
-        takkaMap.put(KeyCode.RIGHT, Stefna.HAEGRI);
-        takkaMap.put(KeyCode.DOWN, Stefna.NIDUR);
-        s.addEventFilter(KeyEvent.ANY,
-                event -> {
-                    handleKeyPress(event);
-                });
-        /*s.setOnKeyReleased(event ->{
-            leikbord.setStefna(takkaMap.get(KeyCode.DOWN));
-        });*/
-    };
 
     private void gameLoop(){
         animationTimer = new AnimationTimer() {
@@ -105,6 +129,7 @@ public class GameController implements ControllerWithModel {
                 if(lastUpdateTime - jumpTime > 32026200) {
                     jumping = false;
                 }
+
                 bolti.update(canvas, gravity);
                 if(bolti.getSpeedY()>=0) {
                     for (Pallur pallur : pallar) {
@@ -145,13 +170,77 @@ public class GameController implements ControllerWithModel {
                     currentmax = bolti.getHaed();
                 }
 
+                if(gameOver || !isRunning) {
+                    teiknaBakgrunn();
+                    animationTimer.stop();
+                }
+
             }
         };
         animationTimer.start();
     }
 
     public void gameover(){
-        animationTimer.stop();
+        teiknaBakgrunn();
+        model.setScore((int)(-maxHaed));
+        setVisabilityGameOver(true);
+        gameOver=true;
+    }
+
+    public void setVisabilityGameOver(boolean visable) {
+        fxPlayAgainButton.setVisible(visable);
+        fxGameOverLabel.setVisible(visable);
+        fxAddHighscoreButton.setVisible(visable);
+        fxGameOverBackToMenuButton.setVisible(visable);
+        fxGameOverLabel.setMouseTransparent(!visable);
+        fxPlayAgainButton.setMouseTransparent(!visable);
+        fxAddHighscoreButton.setMouseTransparent(!visable);
+        fxGameOverBackToMenuButton.setMouseTransparent(!visable);
+        fxGameOverVBox.setMouseTransparent(!visable);
+        fxGameOverVBox.setVisible(visable);
+    }
+
+
+    public void fxPlayAgainButtonClickedHandler() {
+        setVisabilityGameOver(false);
+        initialize();
+    }
+
+
+    public void setVisabilityPauseMenu(boolean visable) {
+        fxBackToMenuButton.setVisible(visable);
+        fxResumeButton.setVisible(visable);
+        fxPauseLabel.setVisible(visable);
+        fxBackToMenuButton.setMouseTransparent(!visable);
+        fxResumeButton.setMouseTransparent(!visable);
+        fxPauseLabel.setMouseTransparent(!visable);
+        fxPauseMenuVBox.setVisible(visable);
+        fxPauseMenuVBox.setMouseTransparent(!visable);
+    }
+
+    public void setVisabilityEnterName(boolean visable) {
+        fxEnterNameVBox.setVisible(visable);
+        fxEnterNameVBox.setMouseTransparent(!visable);
+        fxEnterNameContinueButton.setVisible(visable);
+        fxEnterNameContinueButton.setMouseTransparent(!visable);
+        fxEnterNameLabel.setVisible(visable);
+        fxEnterNameLabel.setMouseTransparent(!visable);
+        fxNameTextField.setVisible(visable);
+        fxNameTextField.setMouseTransparent(!visable);
+    }
+
+
+    public void fxResumeClickedHandler() {
+        pauseGame();
+    }
+
+    public void fxBackToMenuClickedHandler() {
+        ViewSwitcher.switchTo(MAINMENU);
+    }
+
+    public void fxAddHighscoreClickedHandler() {
+        setVisabilityGameOver(false);
+        setVisabilityEnterName(true);
     }
 
     private void addPallar() {
@@ -185,9 +274,11 @@ public class GameController implements ControllerWithModel {
     public void pauseGame() {
         if(isRunning) {
             teiknaBakgrunn();
+            setVisabilityPauseMenu(true);
             isRunning = false;
             animationTimer.stop();
         } else {
+            setVisabilityPauseMenu(false);
             animationTimer.start();
             isRunning = true;
         }
@@ -196,27 +287,23 @@ public class GameController implements ControllerWithModel {
     public void teiknaBakgrunn() {
         gc.setFill(Color.rgb(0, 0, 0, 0.5));
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        animationTimer.stop();
     }
 
     @FXML
     public void handleKeyPress(KeyEvent event) {
         KeyCode code = event.getCode();
-        if (code == KeyCode.LEFT || code == KeyCode.A) {
+        if (code == KeyCode.LEFT || code == KeyCode.A && !isRunning) {
             bolti.moveLeft();
             event.consume();
-        } else if (event.getCode() == KeyCode.RIGHT || code == KeyCode.D) {
+        } else if (event.getCode() == KeyCode.RIGHT || code == KeyCode.D && isRunning) {
             bolti.moveRight();
             event.consume();
-        } else if (event.getCode() == KeyCode.UP || code == KeyCode.W || code == KeyCode.SPACE) {
+        } else if (event.getCode() == KeyCode.UP || code == KeyCode.W || code == KeyCode.SPACE && isRunning) {
             jumping = true;
             jumpTime = lastUpdateTime;
-        } else if (code == KeyCode.ESCAPE || code == KeyCode.P) {
-            pausecount++;
-            if(pausecount == 2) {
-                pausecount = 0;
-                pauseGame();
-            }
+        } else if (code == KeyCode.ESCAPE || code == KeyCode.P && !gameOver) {
+            pauseGame();
         }
     }
-
 }

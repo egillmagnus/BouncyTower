@@ -27,7 +27,6 @@ public class HighscoreController implements Initializable, ControllerWithModel {
         System.out.println("HighscoreController initialize() called");
         loadHighscoreTable();
         updateHighscoreListView();
-        addHighscore("Test Player", 123);
     }
 
     private void loadHighscoreTable() {
@@ -85,11 +84,13 @@ public class HighscoreController implements Initializable, ControllerWithModel {
     }
 
     public void setModel(Game model) {
+        System.out.println("Model set");
         this.model = model;
     }
 
-    public void addHighscore(String playerName, int score) {
-        highscoreTable.addHighscore(playerName, score);
+
+    public void addHighscore() {
+        highscoreTable.addHighscore(model.getPlayerName(), model.getScore());
         saveHighscoreTable();
         updateHighscoreListView();
     }

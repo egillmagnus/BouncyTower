@@ -26,7 +26,7 @@ public class ViewSwitcher {
         }
         try {
             Parent root;
-            if (cache.containsKey(view)) {
+            if (cache.containsKey(view) && view != View.GAME) {
                 System.out.println("Loading from cache");
                 root = cache.get(view);
             } else {
@@ -42,6 +42,7 @@ public class ViewSwitcher {
     }
 
     public static void switchTo(View view, Game model) {
+        System.out.println("Switching to " + view.getFileName());
         if (scene == null) {
             System.out.println("No scene was set");
             return;
@@ -52,8 +53,11 @@ public class ViewSwitcher {
             FXMLLoader loader = new FXMLLoader(ViewSwitcher.class.getResource(view.getFileName()));
             root = loader.load();
             Object controller = loader.getController();
-            if (controller instanceof ControllerWithModel) {
-                ((ControllerWithModel) controller).setModel(model); // set the model
+            System.out.println(view);
+            if (view == View.HIGHSCORES) {
+                ((HighscoreController) controller).setModel(model);
+                System.out.println("Setting Model");
+                ((HighscoreController) controller).addHighscore();
             }
             controllers.put(view, controller); // save the controller
             cache.put(view, root); // save the view

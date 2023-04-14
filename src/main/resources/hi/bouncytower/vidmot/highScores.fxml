@@ -7,6 +7,6 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.HighscoreController">
    <children>
       <Button layoutX="259.0" layoutY="236.0" mnemonicParsing="false" onAction="#onBackToMenuClick" text="Til baka" />
-      <ListView fx:id="highscoreListView" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="highscoreListView" prefWidth="200.0" />
    </children>
 </AnchorPane>

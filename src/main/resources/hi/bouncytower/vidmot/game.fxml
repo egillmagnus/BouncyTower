@@ -6,7 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane onKeyPressed="#handleKeyPress" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.GameController">
+<StackPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.GameController">
+    <Text fx:id="fxNameLengthNotification" fill="#b77a7a" mouseTransparent="true" text="Name needs to be atleast 1 character" underline="true" visible="false">
+        <font>
+            <Font name="System Bold Italic" size="31.0" />
+        </font>
+    </Text>
     <Canvas fx:id="canvas" height="800.0" onKeyPressed="#handleKeyPress" width="700.0">
     </Canvas>
     <Label fx:id="fxScoreCounter" alignment="TOP_LEFT" prefHeight="47.0" prefWidth="220.0" text="Score: 0">
@@ -16,4 +21,59 @@
       <font>
          <Font name="System Bold Italic" size="32.0" />
       </font></Label>
+   <VBox fx:id="fxPauseMenuVBox" alignment="CENTER" mouseTransparent="true" prefHeight="721.0" prefWidth="600.0" spacing="40.0" StackPane.alignment="CENTER">
+      <children>
+          <Label fx:id="fxPauseLabel" mouseTransparent="true" text="Pause" visible="false">
+            <font>
+               <Font name="System Bold Italic" size="58.0" />
+            </font></Label>
+          <Button fx:id="fxResumeButton" mnemonicParsing="false" mouseTransparent="true" onMouseClicked="#fxResumeClickedHandler" prefHeight="85.0" prefWidth="210.0" text="Resume" visible="false">
+            <font>
+               <Font name="System Bold" size="40.0" />
+            </font>
+         </Button>
+         <Button fx:id="fxBackToMenuButton" mnemonicParsing="false" mouseTransparent="true" onMouseClicked="#fxBackToMenuClickedHandler" prefHeight="53.0" prefWidth="178.0" text="Back to menu" visible="false">
+            <font>
+               <Font name="System Bold" size="21.0" />
+            </font>
+         </Button>
+      </children>
+   </VBox>
+   <VBox fx:id="fxGameOverVBox" alignment="CENTER" mouseTransparent="true" prefHeight="200.0" prefWidth="100.0" spacing="20.0" visible="false">
+      <children>
+          <Label fx:id="fxGameOverLabel" mouseTransparent="true" text="Game Over" visible="false">
+            <font>
+               <Font name="System Bold Italic" size="77.0" />
+            </font></Label>
+         <Button fx:id="fxPlayAgainButton" mnemonicParsing="false" mouseTransparent="true" onMouseClicked="#fxPlayAgainButtonClickedHandler" prefHeight="65.0" prefWidth="263.0" text="Play again" visible="false">
+            <font>
+               <Font name="System Bold" size="36.0" />
+            </font></Button>
+         <Button fx:id="fxAddHighscoreButton" mnemonicParsing="false" mouseTransparent="true" onMouseClicked="#fxAddHighscoreClickedHandler" prefHeight="45.0" prefWidth="181.0" text="Save Highscore" visible="false">
+            <font>
+               <Font name="System Bold" size="21.0" />
+            </font></Button>
+          <Button fx:id="fxGameOverBackToMenuButton" mouseTransparent="true" onMouseClicked="#fxBackToMenuClickedHandler" prefHeight="45.0" prefWidth="181.0" text="Back to menu" visible="false">
+            <font>
+               <Font name="System Bold" size="21.0" />
+            </font></Button>
+      </children>
+   </VBox>
+   <VBox fx:id="fxEnterNameVBox" alignment="CENTER" mouseTransparent="true" prefHeight="200.0" prefWidth="100.0" spacing="20.0" visible="false">
+      <children>
+         <Label fx:id="fxEnterNameLabel" mouseTransparent="true" text="Enter Name" visible="false">
+            <font>
+               <Font name="System Bold Italic" size="50.0" />
+            </font></Label>
+         <TextField fx:id="fxNameTextField" alignment="CENTER" maxWidth="200.0" mouseTransparent="true" promptText="Name" visible="false">
+            <font>
+               <Font size="21.0" />
+            </font></TextField>
+         <Button fx:id="fxEnterNameContinueButton" mnemonicParsing="false" mouseTransparent="true" onMouseClicked="#fxEnterNameContinueClickedHandler" prefHeight="45.0" prefWidth="153.0" text="Continue" visible="false">
+            <font>
+               <Font size="21.0" />
+            </font>
+         </Button>
+      </children>
+   </VBox>
 </StackPane>
