@@ -1,6 +1,7 @@
-package hi.bouncytower.vidmot;
+package hi.bouncytower.vinnsla;
 
 
+import hi.bouncytower.vidmot.Bolti;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -15,7 +16,7 @@ public class Background {
 
     private int count = 0;
 
-    Background() {
+    public Background() {
         lastPosHlidar = 0;
         lastPosBack = 0;
     }

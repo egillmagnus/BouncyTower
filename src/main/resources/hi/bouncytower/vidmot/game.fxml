@@ -7,20 +7,30 @@
 <?import javafx.scene.text.*?>
 
 <StackPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.GameController">
+    <Canvas fx:id="canvas" height="800.0" onKeyPressed="#handleKeyPress" width="700.0">
+    </Canvas>
     <Text fx:id="fxNameLengthNotification" fill="#b77a7a" mouseTransparent="true" text="Name needs to be atleast 1 character" underline="true" visible="false">
         <font>
             <Font name="System Bold Italic" size="31.0" />
         </font>
-    </Text>
-    <Canvas fx:id="canvas" height="800.0" onKeyPressed="#handleKeyPress" width="700.0">
-    </Canvas>
-    <Label fx:id="fxScoreCounter" alignment="TOP_LEFT" prefHeight="47.0" prefWidth="220.0" text="Score: 0">
       <StackPane.margin>
-         <Insets bottom="770.0" right="460.0" />
+         <Insets bottom="250.0" />
       </StackPane.margin>
-      <font>
-         <Font name="System Bold Italic" size="32.0" />
-      </font></Label>
+    </Text>
+   <VBox mouseTransparent="true" prefHeight="200.0" prefWidth="100.0">
+      <children>
+          <Label fx:id="fxScoreCounter" alignment="TOP_LEFT" prefHeight="32.0" prefWidth="220.0" text="Score: 0">
+            <font>
+               <Font name="System Bold Italic" size="32.0" />
+            </font>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+               <Insets top="10.0" />
+            </VBox.margin>
+         </Label>
+      </children></VBox>
    <VBox fx:id="fxPauseMenuVBox" alignment="CENTER" mouseTransparent="true" prefHeight="721.0" prefWidth="600.0" spacing="40.0" StackPane.alignment="CENTER">
       <children>
           <Label fx:id="fxPauseLabel" mouseTransparent="true" text="Pause" visible="false">

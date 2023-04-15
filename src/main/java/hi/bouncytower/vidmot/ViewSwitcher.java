@@ -1,5 +1,6 @@
 package hi.bouncytower.vidmot;
 
+import hi.bouncytower.vinnsla.Game;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

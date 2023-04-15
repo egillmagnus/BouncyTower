@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane onKeyPressed="#handleKeyPress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.BouncyTowerController" >
-   <center>
-      <GridPane fx:id="gridPane" styleClass="center-grid" BorderPane.alignment="CENTER">
-         <rowConstraints>
-            <RowConstraints vgrow="ALWAYS" percentHeight="15"/>
-            <RowConstraints vgrow="ALWAYS" percentHeight="10"/>
-            <RowConstraints vgrow="ALWAYS" percentHeight="5"/>
-            <RowConstraints vgrow="ALWAYS" percentHeight="10"/>
-            <RowConstraints vgrow="ALWAYS" percentHeight="5"/>
-            <RowConstraints vgrow="ALWAYS" percentHeight="10"/>
-            <RowConstraints vgrow="ALWAYS" percentHeight="5"/>
-            <RowConstraints vgrow="ALWAYS" percentHeight="10"/>
-            <RowConstraints vgrow="ALWAYS" percentHeight="15"/>
-         </rowConstraints>
-         <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="15"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="70"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="15"/>
-         </columnConstraints>
-         <Button GridPane.rowIndex="1" GridPane.columnIndex="1" mnemonicParsing="false" onAction="#onPlayButtonClick" text="Play" />
-         <Button GridPane.rowIndex="3" GridPane.columnIndex="1" mnemonicParsing="false" onAction="#onHighScoreButtonClick" text="Highscores" />
-         <Button GridPane.rowIndex="5" GridPane.columnIndex="1" mnemonicParsing="false" onAction="#onControlsButtonClick" text="Controls" />
-         <Button GridPane.rowIndex="7" GridPane.columnIndex="1" mnemonicParsing="false" onAction="#onSettingsButtonClick" text="Settings" />
-      </GridPane>
-   </center>
-   <top>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" styleClass="container-HBox">
-         <children>
-            <Label text="BouncyTower" styleClass="header-text" />
-         </children>
-      </HBox>
-   </top>
-   <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" styleClass="container-HBox">
-         <children>
-            <Label text="Lokaverkefni í Viðmótsforritun 2023, Hópur 37" />
-         </children>
-      </HBox>
-   </bottom>
-</BorderPane>
+<StackPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.BouncyTowerController">
+   <Canvas fx:id="fxBackgroundCanvas" height="800" width="700" />
+   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="700.0">
+      <center>
+         <GridPane fx:id="gridPane" styleClass="center-grid" BorderPane.alignment="CENTER">
+            <rowConstraints>
+               <RowConstraints percentHeight="15" vgrow="ALWAYS" />
+               <RowConstraints percentHeight="10" vgrow="ALWAYS" />
+               <RowConstraints percentHeight="5" vgrow="ALWAYS" />
+               <RowConstraints percentHeight="10" vgrow="ALWAYS" />
+               <RowConstraints percentHeight="5" vgrow="ALWAYS" />
+               <RowConstraints percentHeight="10" vgrow="ALWAYS" />
+               <RowConstraints percentHeight="5" vgrow="ALWAYS" />
+               <RowConstraints percentHeight="10" vgrow="ALWAYS" />
+               <RowConstraints percentHeight="15" vgrow="ALWAYS" />
+            </rowConstraints>
+            <columnConstraints>
+               <ColumnConstraints hgrow="ALWAYS" percentWidth="15" />
+               <ColumnConstraints hgrow="ALWAYS" percentWidth="70" />
+               <ColumnConstraints hgrow="ALWAYS" percentWidth="15" />
+            </columnConstraints>
+            <Button mnemonicParsing="false" onAction="#onPlayButtonClick" text="Play" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#onHighScoreButtonClick" text="Highscores" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#onControlsButtonClick" text="Controls" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#onSettingsButtonClick" text="Settings" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+         </GridPane>
+      </center>
+      <top>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="700.0" styleClass="container-HBox" BorderPane.alignment="CENTER">
+            <children>
+               <Label styleClass="header-text" text="BouncyTower">
+                  <font>
+                     <Font size="51.0" />
+                  </font>
+               </Label>
+            </children>
+         </HBox>
+      </top>
+      <bottom>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="container-HBox" BorderPane.alignment="CENTER">
+            <children>
+               <Label text="Lokaverkefni í Viðmótsforritun 2023, Hópur 37" />
+            </children>
+         </HBox>
+      </bottom>
+   </BorderPane>
+</StackPane>

@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="added main background file" />
+    <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="added main background file">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/main_background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vinnsla/Background.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/BouncyTowerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/BouncyTowerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/ControllerWithModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/ControllerWithModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vinnsla/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/HighscoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/HighscoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/ViewSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/ViewSwitcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/main_background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/mainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/mainMenu.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

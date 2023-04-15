@@ -1,11 +1,19 @@
 package hi.bouncytower.vidmot;
 
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 
 public class BouncyTowerController {
+
+    @FXML
+    private Canvas fxBackgroundCanvas;
+
+    private Image bakgrunnur = new Image(getClass().getResource("/Images/main_background.png").toExternalForm());
 
     public void onPlayButtonClick(){
         ViewSwitcher.switchTo(View.GAME);
@@ -24,16 +32,7 @@ public class BouncyTowerController {
         ViewSwitcher.switchTo(View.MAINMENU);
     }
     public void initialize(){
-    }
-    @FXML
-    public void handleKeyPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.LEFT) {
-            System.out.println("Vinstri");
-            event.consume();
-        } else if (event.getCode() == KeyCode.RIGHT) {
-            System.out.println("Hægri");
-            event.consume();
-        }
-        System.out.println("Key pressed");
+        GraphicsContext gc = fxBackgroundCanvas.getGraphicsContext2D();
+        gc.drawImage(bakgrunnur,0, 0, 700, 800);
     }
 }

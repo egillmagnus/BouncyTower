@@ -1,4 +1,4 @@
-package hi.bouncytower.vidmot;
+package hi.bouncytower.vinnsla;
 
 public class Game {
 

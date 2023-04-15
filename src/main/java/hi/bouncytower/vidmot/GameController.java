@@ -1,5 +1,7 @@
 package hi.bouncytower.vidmot;
 
+import hi.bouncytower.vinnsla.Background;
+import hi.bouncytower.vinnsla.Game;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -7,7 +9,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
@@ -252,7 +253,7 @@ public class GameController implements ControllerWithModel {
         if(-fpalla*100 < bolti.getHaed() - bolti.getCenterY() + 800) {
             fpalla++;
             Random random = new Random();
-            double platformX = 90+(random.nextDouble() * (canvas.getWidth() - 340));
+            double platformX = 90+(random.nextDouble() * (canvas.getWidth() - 360));
             pallar.add(new Pallur(platformX, (-fpalla*100)+140, Math.max(100, random.nextDouble() * 250 ) , 20 ));
         }
     }
