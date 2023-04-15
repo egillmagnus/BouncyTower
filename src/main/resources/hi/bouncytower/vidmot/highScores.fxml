@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.HighscoreController">
+<AnchorPane prefHeight="1000.0" prefWidth="700.0" style="-fx-background-color: #48b6f2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.HighscoreController">
    <children>
-      <Button layoutX="259.0" layoutY="236.0" mnemonicParsing="false" onAction="#onBackToMenuClick" text="Til baka" />
-      <ListView fx:id="highscoreListView" prefWidth="200.0" />
+      <ListView fx:id="highscoreListView" layoutX="250.0" layoutY="224.0" prefHeight="308.0" prefWidth="200.0" style="-fx-background-color: #CAE9F5;" />
+      <HBox prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: #DEDEDE;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="700.0" text="HighScore">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="900.0" prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: #48b6f2;" />
+      <Button contentDisplay="CENTER" layoutX="250.0" layoutY="620.0" mnemonicParsing="false" onAction="#onBackToMenuClick" prefHeight="50.0" prefWidth="200.0" text="Til baka">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
