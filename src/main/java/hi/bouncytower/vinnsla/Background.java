@@ -1,7 +1,6 @@
 package hi.bouncytower.vinnsla;
 
 
-import hi.bouncytower.vidmot.Bolti;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 

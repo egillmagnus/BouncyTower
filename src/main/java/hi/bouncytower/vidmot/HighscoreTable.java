@@ -1,5 +1,7 @@
 package hi.bouncytower.vidmot;
 
+import hi.bouncytower.vinnsla.HighscoreEntry;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

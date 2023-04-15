@@ -1,4 +1,4 @@
-package hi.bouncytower.vidmot;
+package hi.bouncytower.vinnsla;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
@@ -24,7 +24,7 @@ public class Bolti extends Circle {
     private double raunHaed;
 
 
-    Bolti() {
+    public Bolti() {
         super(100, 0, 40);
         speedX = 0;
         speedY = 0;

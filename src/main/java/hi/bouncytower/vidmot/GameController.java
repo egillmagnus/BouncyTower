@@ -1,7 +1,6 @@
 package hi.bouncytower.vidmot;
 
-import hi.bouncytower.vinnsla.Background;
-import hi.bouncytower.vinnsla.Game;
+import hi.bouncytower.vinnsla.*;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -85,7 +84,7 @@ public class GameController implements ControllerWithModel {
 
     private long lastUpdateTime = -1;
     private GraphicsContext gc;
-    private static Map<KeyCode,Stefna> takkaMap = new HashMap<>();
+    private static Map<KeyCode, Stefna> takkaMap = new HashMap<>();
     public void initialize(){
         System.out.println("GameController initialize() called");
         bolti = new Bolti();
@@ -147,7 +146,7 @@ public class GameController implements ControllerWithModel {
                 }
 
 
-                fxScoreCounter.setText("Score: "+ (int)Math.ceil(-maxHaed));
+                fxScoreCounter.setText(" Score: "+ (int)Math.ceil(-maxHaed));
                 if(bolti.getHaed()<maxHaed) {
                     maxHaed = bolti.getHaed();
                 }

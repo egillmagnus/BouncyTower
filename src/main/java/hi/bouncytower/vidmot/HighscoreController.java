@@ -1,6 +1,7 @@
 package hi.bouncytower.vidmot;
 
 import hi.bouncytower.vinnsla.Game;
+import hi.bouncytower.vinnsla.HighscoreEntry;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

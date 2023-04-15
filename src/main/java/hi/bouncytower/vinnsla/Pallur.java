@@ -1,4 +1,4 @@
-package hi.bouncytower.vidmot;
+package hi.bouncytower.vinnsla;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
