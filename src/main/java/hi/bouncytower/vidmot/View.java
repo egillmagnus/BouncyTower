@@ -1,10 +1,11 @@
 package hi.bouncytower.vidmot;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-
-import java.io.IOException;
-
+/**
+ * View tilgreinir fxml skrár fyrir hverja senu í Bouncy Tower.
+ * Inniheldur heiti skrár fyrir hverja senu.
+ *
+ * @author Sturla Freyr Magnússon
+ */
 public enum View {
     MAINMENU("mainMenu.fxml"),
     SETTINGS("settings.fxml"),
@@ -14,9 +15,18 @@ public enum View {
 
     private String fileName;
 
+    /**
+     * Smiður fyrir View.
+     *
+     * @param fileName Heiti fxml skrár fyrir viðmótið.
+     */
     View(String fileName) {this.fileName = fileName;}
 
-
+    /**
+     * Sækir heiti fxml skrár fyrir viðmót.
+     *
+     * @return Heiti fxml skrár fyrir viðmót.
+     */
     public String getFileName(){return fileName;}
 
 }

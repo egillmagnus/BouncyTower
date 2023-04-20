@@ -13,6 +13,12 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * HighscoreController stjórnar viðmóti fyrir stigatöflu senuna í Bouncy Tower.
+ * Sýnir stigatöfluna, bætir við stigum og vistar stigatöfluna.
+ *
+ * @author Sturla Freyr Magnússon
+ */
 public class HighscoreController implements Initializable, ControllerWithModel {
     @FXML
     private ListView<String> highscoreListView;
@@ -22,6 +28,9 @@ public class HighscoreController implements Initializable, ControllerWithModel {
     private Game model;
     private ObservableList<String> highscoreItems = FXCollections.observableArrayList();
 
+    /**
+     * Upphafsstillingar fyrir stigatöfluskjá.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("HighscoreController initialize() called");
@@ -29,8 +38,10 @@ public class HighscoreController implements Initializable, ControllerWithModel {
         updateHighscoreListView();
     }
 
+    /**
+     * Hleður stigatöflu úr skrá.
+     */
     private void loadHighscoreTable() {
-        System.out.println("HighscoreController loadHighscoreTable() called");
         File highscoreFile = new File(HIGHSCORE_FILE);
         if (highscoreFile.exists()) {
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(highscoreFile))) {
@@ -38,19 +49,19 @@ public class HighscoreController implements Initializable, ControllerWithModel {
                 if (highscoreTable == null) {
                     throw new InvalidObjectException("Deserialized highscoreTable is null");
                 }
-                System.out.println("Loaded highscoreTable from file: " + highscoreTable);
             } catch (IOException | ClassNotFoundException e) {
-                System.err.println("Error loading highscoreTable from file. Creating a new one.");
                 highscoreTable = new HighscoreTable();
                 populateDefaultHighscores();
             }
         } else {
             highscoreTable = new HighscoreTable();
-            System.out.println("Created new highscoreTable: " + highscoreTable);
             populateDefaultHighscores();
         }
     }
 
+    /**
+     * Uppfærir ListView með stigatöflu.
+     */
     public void updateHighscoreListView() {
         List<HighscoreEntry> highscores = highscoreTable.getHighscores();
         System.out.println("Highscores: " + highscores);
@@ -63,6 +74,9 @@ public class HighscoreController implements Initializable, ControllerWithModel {
         highscoreListView.setItems(highscoreItems);
     }
 
+    /**
+     * Býr til sjálfgefna stigatöflu.
+     */
     private void populateDefaultHighscores(){
         highscoreTable.addHighscore("King of the Tower",25000);
         highscoreTable.addHighscore("The Developer", 18000);
@@ -71,29 +85,41 @@ public class HighscoreController implements Initializable, ControllerWithModel {
         highscoreTable.addHighscore("Some Nerd", 1000);
         highscoreTable.addHighscore("The Worst Player", 10);
     }
+
+    /**
+     * Vistar stigatöfluna í skrá.
+     */
     private void saveHighscoreTable() {
         File highscoreFile = new File(HIGHSCORE_FILE);
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(highscoreFile))) {
             oos.writeObject(highscoreTable);
-            System.out.println("HighscoreTable saved to file: " + highscoreFile.getAbsolutePath());
         } catch (IOException e) {
-            System.err.println("Error saving highscoreTable to file.");
             e.printStackTrace();
         }
     }
 
+    /**
+     * Setur módelið fyrir stigatöfluskjáinn.
+     * @param model Leikjarmódelið sem stigatöfluskjárinn vinnur með.
+     */
     public void setModel(Game model) {
-        System.out.println("Model set");
         this.model = model;
     }
 
-
+    /**
+     * Bætir nafni og stigum við stigatöfluna og vistar þau.
+     */
     public void addHighscore() {
         highscoreTable.addHighscore(model.getPlayerName(), model.getScore());
         saveHighscoreTable();
         updateHighscoreListView();
     }
+
+    /**
+     * Atburður sem gerist þegar smellt er á "Til baka" takkann.
+     * Skiptir yfir í aðalvalmyndina.
+     */
     public void onBackToMenuClick(){
         ViewSwitcher.switchTo(View.MAINMENU);
     }

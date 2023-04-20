@@ -9,17 +9,33 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * ViewSwitcher stjórnar viðmótaskiptum í Bouncy Tower.
+ * Klasinn heldur utan um cache af Parent hlutum sem eru geymd viðmót.
+ * Hann sér um að hlaða og skipta milli viðmóta.
+ *
+ * @author Sturla Freyr Magnússon
+ */
 public class ViewSwitcher {
     private static Map<View, Parent> cache = new HashMap<>();
 
     private static final Map<View, Object> controllers = new HashMap<>();
     private static Scene scene;
 
+    /**
+     * Stillir grunnsenu fyrir viðmótaskipti.
+     *
+     * @param scene Sena sem viðmótaskiptin eiga við.
+     */
     public static void setScene(Scene scene) {
         ViewSwitcher.scene = scene;
     }
 
+    /**
+     * Skiptir viðmóti án þess að sækja eða uppfæra módel.
+     *
+     * @param view Viðmótssena sem á að skipta yfir í.
+     */
     public static void switchTo(View view) {
         if (scene == null) {
             System.out.println("No scene was set");
@@ -42,6 +58,12 @@ public class ViewSwitcher {
         }
     }
 
+    /**
+     * Skiptir viðmóti og uppfærir módel.
+     *
+     * @param view Viðmótssena sem á að skipta yfir í.
+     * @param model Módelið sem viðmótið þarf að hafa.
+     */
     public static void switchTo(View view, Game model) {
         System.out.println("Switching to " + view.getFileName());
         if (scene == null) {
@@ -67,6 +89,4 @@ public class ViewSwitcher {
             e.printStackTrace();
         }
     }
-
-
 }
