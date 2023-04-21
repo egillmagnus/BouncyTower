@@ -1,6 +1,8 @@
+/* Author: Sturla Freyr Magnússon */
+
+/* Stillingar fyrir grid í main menu */
 .center-grid {
     -fx-padding: 10% 15%;
-     /*-fx-background-color: red; */
 }
 .center-grid .button {
     -fx-pref-width: 100%;
@@ -10,14 +12,18 @@
     -fx-font-size: 1.5em;
     -fx-margin: 20%;
 }
+
+/* Stillingar fyrir texta í hausum á BorderPane */
 .header-text {
     -fx-font-size: 3.5em;
     -fx-font-weigth: bold;
 }
+/* Stillingar fyrir HBox wrapper í hausum og fótum á BorderPane */
 .container-HBox {
     -fx-background-color: lightgray;
 }
 
+/* Stillingar til að láta label lýkjast lyklaborðs takka */
 .label.key {
     -fx-background-color: #cccccc;
     -fx-border-color: #888888;
@@ -26,6 +32,7 @@
     -fx-font-family: "Arial";
     -fx-font-size: 14px;
 }
+/* Stilling fyrir bakgrunnslit í sumum senum */
 .blueBackground{
     -fx-background-color: #48b6f2;
 }

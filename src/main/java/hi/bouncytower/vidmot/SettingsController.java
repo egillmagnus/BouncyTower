@@ -12,6 +12,11 @@ import javafx.scene.input.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller sem stjórnar viðmóti fyrir senu sem leyfir notanda að stjórna stillingum forritsins
+ *
+ * @author Alexandra Björk Magnússardóttir
+ */
 public class SettingsController implements Initializable {
 
     @FXML
@@ -25,6 +30,10 @@ public class SettingsController implements Initializable {
 
     private String[] boltar = {"Rauður bolti", "Fótbolti"};
 
+    /**
+     * Upphafstillir SettingsController. Stillir vaktara á breytingum á vali notandans.
+     * Þegar notandi velur bolta skiptir forritið um myndina sem er sýnd.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         veljaBolta.getItems().addAll(boltar);
@@ -45,12 +54,11 @@ public class SettingsController implements Initializable {
             }
         });
     }
-    @FXML
-    void handleKeyPress(KeyEvent event) {
 
-    }
-
-
+    /**
+     * Atburður sem gerist þegar smellt er á "Til baka" takkann.
+     * Skiptir yfir í aðalvalmyndina.
+     */
     public void onBackToMenuClick(){
         ViewSwitcher.switchTo(View.MAINMENU);
     }

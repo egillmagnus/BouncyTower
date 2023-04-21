@@ -10,9 +10,12 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 
+/**
+ * Klasi fyrir hvern pall í leiknum. Heldur utanum breidd og lit palls.
+ *
+ * @author Egill Magnússon
+ */
 public class Pallur extends Rectangle {
-
-
     String litur = "#999999";
 
     double yHnit;

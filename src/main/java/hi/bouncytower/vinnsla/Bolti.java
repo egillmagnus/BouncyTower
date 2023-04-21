@@ -4,17 +4,21 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
 
+/**
+ * Bolti klasinn er hluti af vinnslupakkanum og sér um að stjórna boltanum í BouncyTower.
+ * Hann sér um hraða, stefnu, stærð og hreyfingu boltans. Klasinn inniheldur líka aðferðir til að
+ * stýra boltanum til vinstri eða hægri, hoppa og hreyfa bakgrunninn miðað við boltann.
+ *
+ * @author Egill Magnússon
+ */
 public class Bolti extends Circle {
     private double x;
     private double y;
     private double speedX;
     private double speedY;
-
-    //private String imageFilePath = "C:/Users/toegi/Documents/V23/HBV201G/Stóra verkefnit/BouncyTower/src/main/Images/ball_stop.png";
     private String imageFilePath = getClass().getResource("/Images/ball_stop.png").toExternalForm();
 
     private boolean moveBackground;
-
 
     private double radius = 40;
     private double maxSpeedX = 5;
@@ -23,7 +27,10 @@ public class Bolti extends Circle {
 
     private double raunHaed;
 
-
+    /**
+     * Smiður fyrir Bolti-klasann. Skilgreinir upphafshraða, staðsetningu
+     * og radius fyrir boltann.
+     */
     public Bolti() {
         super(100, 0, 40);
         speedX = 0;
@@ -32,7 +39,10 @@ public class Bolti extends Circle {
     }
 
     /**
-     * Ef bolti er á palli
+     * Setur bolta á pall og stoppar bolta frá því að detta niður
+     *
+     * @param pallur Pallur tilvik sem boltinn á að fylgja
+     * @param canvas Canvas sem boltinn er teiknaður á
      */
     public void updateBoltiAPall(Pallur pallur, Canvas canvas) {
         raunHaed = pallur.getY() - radius;
@@ -41,14 +51,31 @@ public class Bolti extends Circle {
         aPalli = true;
     }
 
+    /**
+     * Skilar raunhæð boltans.
+     *
+     * @return raunhæð boltans
+     */
     public double getHaed() {
         return raunHaed;
     }
 
+    /**
+     * Sækir hraða boltans á Y-ás.
+     *
+     * @return hraði boltans Y-ás
+     */
     public double getSpeedY() {
         return speedY;
     }
 
+    /**
+     * Uppfærir stöðu og hraða boltans reiknar hvar hann á að vera miðað við þyngdaraflið og skjástærð
+     * teiknar boltann á nýjum stað.
+     *
+     * @param canvas skjárinn sem boltinn er teiknaður á
+     * @param gravity þyngdaraflið sem áhrif hafa á boltann
+     */
     public void update(Canvas canvas, double gravity) {
         speedY = Math.min(speedY, 25);
         double oldCenter = getCenterY();
@@ -79,15 +106,18 @@ public class Bolti extends Circle {
     }
 
     /**
-     * Setur y hraðann í 0
+     * Skilar mynd af boltanum út frá slóð svo hægt sé að teikna hann á skjáinn.
+     *
+     * @return mynd af boltanum
      */
-    public void stopSpeedY(){
-        speedY = 0;
-    }
-
     public Image getImage() {
         return new Image(imageFilePath);
     }
+
+    /**
+     * Færir boltann til vinstri ef hraði hans er ekki nú þegar
+     * á hámarki (-maxSpeedX).
+     */
     public void moveLeft() {
         if(speedX - 1 >= -maxSpeedX) {
             if(speedX > 0 && speedX > 1.5) {
@@ -98,17 +128,28 @@ public class Bolti extends Circle {
         }
     }
 
+    /**
+     * Skilar boolean gildi sem segir hvort bakgrunnur eigi að hreyfa sig
+     *
+     * @return 'true' ef bakgrunnurinn á að hreyfa sig, annars 'false'
+     */
     public boolean moveBackground() {
         return moveBackground;
     }
 
-
+    /**
+     * Lætur boltann hoppa með því að breyta hraða hanns á Y-ás.
+     */
     public void jump() {
         setCenterY(getCenterY() - 1);
         raunHaed-=1;
         speedY = -14-(speedX*speedX)/3;
     }
 
+    /**
+     * Færir boltann til hægri ef hraði hans er ekki nú þegar
+     * á hámarki (maxSpeedX).
+     */
     public void moveRight() {
         if(speedX + 1 <= maxSpeedX) {
             if(speedX < 0 && speedX < -1.5) {

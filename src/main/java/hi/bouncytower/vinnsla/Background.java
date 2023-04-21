@@ -4,6 +4,13 @@ package hi.bouncytower.vinnsla;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+/**
+ * Background klasinn er hluti af vinnslupakkanum og sér um að teikna
+ * bakgrunnsmyndina fyrir Bouncy Tower leikinn. Klasinn notar slóðir að
+ * myndaskrám og GraphicsContext til að teikna myndirnar á réttum stað.
+ *
+ * @author Egill Magnússon
+ */
 public class Background {
     private String imageFilePathBackWall = getClass().getResource("/Images/background_wall.png").toExternalForm();
 
@@ -15,11 +22,22 @@ public class Background {
 
     private int count = 0;
 
+    /**
+     * Smiður fyrir Background. Upphafstillir staðsetningar fyrir hliðar- og
+     * bakveggi á bakgrunni.
+     */
     public Background() {
         lastPosHlidar = 0;
         lastPosBack = 0;
     }
 
+    /**
+     * Teiknar bakgrunnsmyndina á skjáinn með GraphicsContext. Sér um að
+     * uppfæra staðsetningar myndanna og teiknar þær rétt miðað við boltann.
+     *
+     * @param gc GraphicsContext til að teikna bakgrunnsmyndina
+     * @param bolti Bolti tilvik sem stýrir hreyfingu bakgrunnar
+     */
     public void draw(GraphicsContext gc, Bolti bolti) {
         double posVeggir;
         double posBackVeggir;
@@ -42,10 +60,5 @@ public class Background {
         } else {
             count++;
         }
-
-
     }
-
-
-
 }

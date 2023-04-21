@@ -19,6 +19,12 @@ import java.util.*;
 import static hi.bouncytower.vidmot.View.HIGHSCORES;
 import static hi.bouncytower.vidmot.View.MAINMENU;
 
+/**
+ * GameController stjórnar viðmótinu og aðferðum leikjarlykkjunni,
+ * svo sem leikjastjórn, teikna leikjaelement og atburðavaka.
+ *
+ * @author Egill Magnússon
+ */
 public class GameController implements ControllerWithModel {
 
     @FXML
@@ -84,7 +90,11 @@ public class GameController implements ControllerWithModel {
 
     private long lastUpdateTime = -1;
     private GraphicsContext gc;
-    private static Map<KeyCode, Stefna> takkaMap = new HashMap<>();
+
+    /**
+     * Upphafsstillingar fyrir GameController. Setur upp leikjaelement, bakgrunn
+     * og byrjar leikjalúppuna.
+     */
     public void initialize(){
         System.out.println("GameController initialize() called");
         bolti = new Bolti();
@@ -101,7 +111,10 @@ public class GameController implements ControllerWithModel {
         isRunning = true;
         gameLoop();
     }
-
+    /**
+     * Atburðavakinn fyrir hnappinn fxEnterNameContinueButton.
+     * Sækir nafn og skiptir yfir á HIGHSCORES-skjáinn.
+     */
     public void fxEnterNameContinueClickedHandler() {
         String name = fxNameTextField.getText();
         if(name.length() < 1) {
@@ -112,10 +125,18 @@ public class GameController implements ControllerWithModel {
         }
     }
 
+    /**
+     * Vistar módelið.
+     *
+     * @param model Leikjamódelið sem á að nota.
+     */
     public void setModel(Game model) {
         this.model = model;
     }
 
+    /**
+     * Leikjalykkja sem sér um að uppfæra og teikna element í leiknum.
+     */
     private void gameLoop(){
         animationTimer = new AnimationTimer() {
 
@@ -145,7 +166,6 @@ public class GameController implements ControllerWithModel {
                     }
                 }
 
-
                 fxScoreCounter.setText(" Score: "+ (int)Math.ceil(-maxHaed));
                 if(bolti.getHaed()<maxHaed) {
                     maxHaed = bolti.getHaed();
@@ -154,7 +174,6 @@ public class GameController implements ControllerWithModel {
                     stop();
                     gameover();
                 }
-
 
                 addPallar();
 
@@ -175,12 +194,14 @@ public class GameController implements ControllerWithModel {
                     teiknaOverlay();
                     animationTimer.stop();
                 }
-
             }
         };
         animationTimer.start();
     }
 
+    /**
+     * Lýkur leik og sýnir lokaskjá með valmöguleikum.
+     */
     public void gameover(){
         teiknaOverlay();
         model.setScore((int)(-maxHaed));
@@ -188,6 +209,11 @@ public class GameController implements ControllerWithModel {
         gameOver=true;
     }
 
+    /**
+     * Stýrir sýnileika lokaskjás.
+     *
+     * @param visable Satt ef lokaskjár á að vera sýnilegur, annars ósatt.
+     */
     public void setVisabilityGameOver(boolean visable) {
         fxPlayAgainButton.setVisible(visable);
         fxGameOverLabel.setVisible(visable);
@@ -201,13 +227,20 @@ public class GameController implements ControllerWithModel {
         fxGameOverVBox.setVisible(visable);
     }
 
-
+    /**
+     * Atburðavakinn fyrir hnappinn fxPlayAgainButton.
+     * Endurræsir leikinn og felur lokaskjáinn.
+     */
     public void fxPlayAgainButtonClickedHandler() {
         setVisabilityGameOver(false);
         initialize();
     }
 
-
+    /**
+     * Stýrir sýnileika pásuskjás.
+     *
+     * @param visable Satt ef leikur er í pásu, annars ósatt.
+     */
     public void setVisabilityPauseMenu(boolean visable) {
         fxBackToMenuButton.setVisible(visable);
         fxResumeButton.setVisible(visable);
@@ -218,7 +251,11 @@ public class GameController implements ControllerWithModel {
         fxPauseMenuVBox.setVisible(visable);
         fxPauseMenuVBox.setMouseTransparent(!visable);
     }
-
+    /**
+     * Stýrir sýnileika nafnaskráningar.
+     *
+     * @param visable Satt ef nafnaskráningarskjár á að vera sýnilegur, annars ósatt.
+     */
     public void setVisabilityEnterName(boolean visable) {
         fxEnterNameVBox.setVisible(visable);
         fxEnterNameVBox.setMouseTransparent(!visable);
@@ -230,24 +267,41 @@ public class GameController implements ControllerWithModel {
         fxNameTextField.setMouseTransparent(!visable);
     }
 
+    /**
+     * Teiknar mynd bakgrunn á skjánum.
+     */
     public void teiknabakgrunn() {
         background.draw(gc, bolti);
     }
 
-
+    /**
+     * Atburðavakinn fyrir hnappinn fxResumeButton.
+     * Endurræsir eða stöðvar leikinn.
+     */
     public void fxResumeClickedHandler() {
         pauseGame();
     }
 
+    /**
+     * Atburðavakinn fyrir hnappinn fxBackToMenuButton.
+     * Skiptir yfir á aðalskjáinn.
+     */
     public void fxBackToMenuClickedHandler() {
         ViewSwitcher.switchTo(MAINMENU);
     }
 
+    /**
+     * Atburðavakinn fyrir hnappinn fxAddHighscoreButton.
+     * Sýnir nafnaskráningar-valmyndina.
+     */
     public void fxAddHighscoreClickedHandler() {
         setVisabilityGameOver(false);
         setVisabilityEnterName(true);
     }
 
+    /**
+     * Bætir við pöllum á skjáinn.
+     */
     private void addPallar() {
         if(-fpalla*100 < bolti.getHaed() - bolti.getCenterY() + 800) {
             fpalla++;
@@ -257,16 +311,29 @@ public class GameController implements ControllerWithModel {
         }
     }
 
+    /**
+     * Teiknar boltann á skjáinn
+     */
     private void teiknaBolta() {
         gc.drawImage(bolti.getImage(), bolti.getCenterX(), bolti.getCenterY(), bolti.getRadius(), bolti.getRadius());
     }
 
+    /**
+     * Teiknar alla palla á skjáinn.
+     */
     public void teiknaPalla() {
         for (Pallur pallur : pallar) {
             pallur.draw(gc, bolti.getHaed(), bolti.getCenterY());
         }
     }
 
+    /**
+     * Athugar hvort boltinn er á palli.
+     *
+     * @param ball Boltinn sem notandi stjórnar.
+     * @param pallur Pallurinn sem á að athuga.
+     * @return Skilar satt ef boltinn er á pallinum, annars ósatt.
+     */
     public boolean boltiAPall(Bolti ball, Pallur pallur) {
         if(ball.getCenterX() > pallur.getX()-ball.getRadius() && ball.getCenterX() < pallur.getX()+pallur.getWidth()) {
             if(ball.getHaed() > pallur.getY()-ball.getRadius() && ball.getHaed() < pallur.getY()+pallur.getHeight() && currentmax < pallur.getY()-20) {
@@ -276,6 +343,9 @@ public class GameController implements ControllerWithModel {
         return false;
     }
 
+    /**
+     * Setur á pásu eða endurræsir leikinn.
+     */
     public void pauseGame() {
         if(isRunning) {
             teiknaOverlay();
@@ -289,12 +359,19 @@ public class GameController implements ControllerWithModel {
         }
     }
 
+    /**
+     * Teiknar overlay yfir leikinn þegar hann er í pause.
+     */
     public void teiknaOverlay() {
         gc.setFill(Color.rgb(0, 0, 0, 0.5));
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         animationTimer.stop();
     }
-
+    /**
+     * Atburðavakinn fyrir lyklaborðsyttur.
+     *
+     * @param event KeyEvent hlutur sem lýsir atburðinum.
+     */
     @FXML
     public void handleKeyPress(KeyEvent event) {
         KeyCode code = event.getCode();

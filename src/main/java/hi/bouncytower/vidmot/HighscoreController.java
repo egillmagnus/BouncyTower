@@ -2,6 +2,7 @@ package hi.bouncytower.vidmot;
 
 import hi.bouncytower.vinnsla.Game;
 import hi.bouncytower.vinnsla.HighscoreEntry;
+import hi.bouncytower.vinnsla.HighscoreTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
