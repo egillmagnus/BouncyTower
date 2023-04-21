@@ -15,6 +15,7 @@ import java.util.Map;
  * Hann sér um að hlaða og skipta milli viðmóta.
  *
  * @author Sturla Freyr Magnússon
+ * @author Egill Magnússon
  */
 public class ViewSwitcher {
     private static Map<View, Parent> cache = new HashMap<>();

@@ -64,7 +64,6 @@ public class HighscoreController implements Initializable, ControllerWithModel {
      */
     public void updateHighscoreListView() {
         List<HighscoreEntry> highscores = highscoreTable.getHighscores();
-        System.out.println("Highscores: " + highscores);
         highscoreItems.clear();
 
         for (HighscoreEntry entry : highscores) {
