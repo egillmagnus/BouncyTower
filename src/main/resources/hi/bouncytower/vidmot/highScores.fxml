@@ -15,7 +15,7 @@
       </HBox>
    </bottom>
    <top>
-      <HBox prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: #DEDEDE;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="100.0" prefWidth="700.0" styleClass="container-HBox" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="700.0" text="HighScore">
                <font>

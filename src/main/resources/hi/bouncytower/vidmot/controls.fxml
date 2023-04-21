@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Font?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
             prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.ControlsController">
     <center>
@@ -24,16 +25,20 @@
         </GridPane>
     </center>
    <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" alignment="CENTER">
+      <HBox prefHeight="100.0" prefWidth="200.0" styleClass="container-HBox" BorderPane.alignment="CENTER" alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#onBackToMenuClick" text="Til baka" />
          </children>
       </HBox>
    </bottom>
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" alignment="CENTER">
+      <HBox prefHeight="100.0" prefWidth="200.0" styleClass="container-HBox" BorderPane.alignment="CENTER" alignment="CENTER">
          <children>
-            <Label text="Controls" styleClass="header-text" />
+            <Label text="Controls">
+             <font>
+                 <Font name="System Bold" size="36.0" />
+             </font>
+            </Label>
          </children>
       </HBox>
    </top>
