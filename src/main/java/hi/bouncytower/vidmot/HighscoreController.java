@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 
 import java.io.*;
@@ -33,9 +34,21 @@ public class HighscoreController implements Initializable, ControllerWithModel {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("HighscoreController initialize() called");
         loadHighscoreTable();
         updateHighscoreListView();
+
+        highscoreListView.setCellFactory(listView -> new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item);
+                    setStyle("-fx-alignment: CENTER; -fx-padding: 5; -fx-font-weight: bold; -fx-font-size: 14;");
+                }
+            }
+        });
     }
 
     /**

@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5b4ac14-cae1-48cc-a66a-53ae1b9eb7f1" name="Changes" comment="added main background file">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2023_3_44_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2023_3_44_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/BouncyTowerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/BouncyTowerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/HighscoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/HighscoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/ViewSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hi/bouncytower/vidmot/ViewSwitcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/controls.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/controls.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/highScores.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hi/bouncytower/vidmot/highScores.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/stylesheets/bouncytower.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/stylesheets/bouncytower.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

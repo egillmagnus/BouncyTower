@@ -3,9 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.ControlsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.bouncytower.vidmot.ControlsController">
     <center>
-        <GridPane fx:id="contentGrid" vgap="10" BorderPane.alignment="CENTER">
+        <GridPane fx:id="contentGrid" vgap="10" BorderPane.alignment="CENTER" styleClass="blueBackground">
             <columnConstraints>
                 <ColumnConstraints percentWidth="15" />
                 <ColumnConstraints percentWidth="70" />
